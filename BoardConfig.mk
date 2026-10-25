@@ -1,4 +1,4 @@
-#
+﻿#
 # Copyright (C) 2026 The Android Open Source Project
 # Copyright (C) 2026 SebaUbuntu's TWRP device tree generator
 #
@@ -92,3 +92,12 @@ TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
+
+# 禁用易崩溃的后台电量与温度读取线程
+TW_NO_BATT_PERCENT := true
+TW_NO_CPU_TEMP := true
+# 禁用默认 MTP 初始化，防止 USB 节点死锁
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_NO_USB_STORAGE := true
+# 防止主菜单触摸冲突与休眠假死
+TW_NO_SCREEN_TIMEOUT := true
