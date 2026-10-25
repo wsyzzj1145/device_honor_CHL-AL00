@@ -15,7 +15,7 @@ $(call inherit-product-if-exists, vendor/twrp/config/common.mk)
 # Inherit from CHL-AL00 device
 $(call inherit-product, device/honor/CHL-AL00/device.mk)
 
-PRODUCT_DEVICE := CHL_AL00
+PRODUCT_DEVICE := CHL-AL00
 PRODUCT_NAME := omni_CHL_AL00
 PRODUCT_BRAND := honor
 PRODUCT_MODEL := CHL-AL00
