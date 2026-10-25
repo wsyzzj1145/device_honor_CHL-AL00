@@ -15,8 +15,10 @@ $(call inherit-product, vendor/omni/config/common.mk)
 # Inherit from CHL-AL00 device
 $(call inherit-product, device/honor/CHL-AL00/device.mk)
 
-PRODUCT_DEVICE := CHL-AL00
-PRODUCT_NAME := omni_CHL-AL00
+PRODUCT_DEVICE := CHL_AL00
+PRODUCT_NAME := omni_CHL_AL00
+PRODUCT_BRAND := honor
+PRODUCT_MODEL := CHL-AL00
 PRODUCT_MANUFACTURER := honor
 
 PRODUCT_GMS_CLIENTID_BASE := android-honor
@@ -24,4 +26,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-honor
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="CHL-AL00-user 11 HONORCHL-AL00 5.0.0.120C00 release-keys"
 
-BUILD_FINGERPRINT := None
+BUILD_FINGERPRINT := honor/CHL-AL00/HNCHL-M:11/HONORCHL-AL00/5.0.0.120C00:user/release-keys
