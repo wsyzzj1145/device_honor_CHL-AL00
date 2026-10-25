@@ -1,5 +1,5 @@
-/log                                        ext4        /dev/block/platform/bootdevice/by-name/log               flags=display=log
-/data                                       f2fs        /dev/block/platform/bootdevice/by-name/userdata          flags=display=data
+﻿/log                                        ext4        /dev/block/platform/bootdevice/by-name/log               flags=display=log
+/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev wait,check,formattable
 /cache                                      ext4        /dev/block/platform/bootdevice/by-name/cache             flags=display=cache
 /mnt/vendor/protect_f                       ext4        /dev/block/platform/bootdevice/by-name/protect1          flags=display=protect_f
 /mnt/vendor/protect_s                       ext4        /dev/block/platform/bootdevice/by-name/protect2          flags=display=protect_s
