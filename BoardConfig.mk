@@ -28,29 +28,21 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=enforcing unmovable_isolate1=2:256M,3:312M,4:348M buildvariant=user
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive unmovable_isolate1=2:256M,3:312M,4:348M buildvariant=userdebug
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x16f88000
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_KERNEL_SEPARATED_DTBO := true
-TARGET_KERNEL_CONFIG := CHL-AL00_defconfig
-TARGET_KERNEL_SOURCE := kernel/honor/CHL-AL00
+BOARD_MKBOOTIMG_ARGS += --header_version 
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 
+BOARD_MKBOOTIMG_ARGS += --tags_offset 
+BOARD_KERNEL_IMAGE_NAME := kernel
 
-# Kernel - prebuilt
-TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_INCLUDE_DTB_IN_BOOTIMG := 
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_KERNEL_SEPARATED_DTBO := 
-endif
+# Kernel - Prebuilt
+TARGET_PREBUILT_KERNEL := /prebuilt/kernel
+TARGET_PREBUILT_DTB := /prebuilt/dtb.img
+BOARD_PREBUILT_DTBOIMAGE := /prebuilt/dtbo.img
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_INCLUDE_RECOVERY_DTBO := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -66,7 +58,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_BOARD_PLATFORM := default
 
 # Recovery
-BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -93,11 +84,13 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 
-# 禁用易崩溃的后台电量与温度读取线程
+# Disable crashing background threads
 TW_NO_BATT_PERCENT := true
 TW_NO_CPU_TEMP := true
-# 禁用默认 MTP 初始化，防止 USB 节点死锁
+
+# Prevent USB / MTP deadlock on boot
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_NO_USB_STORAGE := true
-# 防止主菜单触摸冲突与休眠假死
+
+# Prevent screen timeout & touch freeze
 TW_NO_SCREEN_TIMEOUT := true
