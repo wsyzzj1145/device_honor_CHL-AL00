@@ -5,4 +5,5 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/honor/CHL-AL00
+$(call inherit-product-if-exists, vendor/twrp/config/common.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
