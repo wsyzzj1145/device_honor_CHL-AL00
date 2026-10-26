@@ -28,34 +28,34 @@ BOARD_RAMDISK_OFFSET := 0x11088000
 BOARD_TAGS_OFFSET := 0x07888000
 BOARD_BOOT_HEADER_VERSION := 2
 
-# 关键内核参数：放行 SELinux 并将看门狗超时延长到 10 分钟
+# Kernel cmdline: permissive selinux and extend watchdog to 10 minutes
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive mtk_wdt.timeout=600
 
-# 动态分区 Super 声明
+# Dynamic Partitions Super declaration
 BOARD_SUPER_PARTITION_SIZE := 10200547328
 BOARD_SUPER_PARTITION_GROUPS := honor_dynamic_partitions
 BOARD_HONOR_DYNAMIC_PARTITIONS_SIZE := 10200547328
 BOARD_HONOR_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product
 
-# 屏幕分辨率与主题
+# Screen resolution and theme
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 TW_THEME := portrait_hdpi
 
 # ----------------------------------------------------
-# 终极防闪退防重启配置（修复 Gamma 空指针与看门狗）
+# Anti-crash and anti-reboot configuration
 # ----------------------------------------------------
-# 1. 彻底禁止 TWRP 软件级触碰背光与伽马色彩寄存器（防止 lcd_kit 崩溃）
+# 1. Disable software brightness and gamma control (prevent lcd_kit crash)
 TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/nop"
 TW_MAX_BRIGHTNESS := 0
 
-# 2. 禁用易崩溃的后台轮询线程
+# 2. Disable crashing background polling threads
 TW_NO_BATT_PERCENT := true
 TW_NO_CPU_TEMP := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_NO_USB_STORAGE := true
 TW_NO_SCREEN_TIMEOUT := true
 
-# 3. 禁用加密库
+# 3. Disable crypto
 TW_INCLUDE_CRYPTO := false
